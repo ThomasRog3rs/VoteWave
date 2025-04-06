@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
 	"vote-wave/db"
 	"vote-wave/models"
@@ -10,9 +11,11 @@ import (
 )
 
 func ShowCreatePollForm(c *gin.Context) {
+	log.Println("Executing handler: ShowCreatePollForm") // Log entry
 	c.HTML(http.StatusOK, "create_poll.html", gin.H{
 		"Title": "Create New Poll",
 	})
+	log.Println("Finished c.HTML call in ShowCreatePollForm") // Log exit
 }
 
 func CreatePoll(c *gin.Context) {
