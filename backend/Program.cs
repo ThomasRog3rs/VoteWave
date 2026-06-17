@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using QuizApi.Hubs;
 using QuizApi.Models;
+using QuizApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<QuizDbContext>(opt => opt.UseSqlite("Data Source=quizzes.db"));
+builder.Services.AddSingleton<RoomService>();
 
 var app = builder.Build();
 
